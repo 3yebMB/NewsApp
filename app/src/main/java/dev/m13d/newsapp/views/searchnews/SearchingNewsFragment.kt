@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.m13d.newsapp.R
 import dev.m13d.newsapp.adapters.NewsListAdapter
 import dev.m13d.newsapp.databinding.FragmentSearchingNewsBinding
+import dev.m13d.newsapp.di.app.App
 import dev.m13d.newsapp.model.entity.Article
 import dev.m13d.newsapp.views.details.DetailsFragment
 import dev.m13d.newsapp.views.factory.ViewModelFactory
@@ -19,11 +21,13 @@ import dev.m13d.newsapp.views.newslist.NewsListFragment
 import dev.m13d.newsapp.views.utils.AppState
 import dev.m13d.newsapp.views.utils.gone
 import dev.m13d.newsapp.views.utils.visible
+import javax.inject.Inject
 
 class SearchingNewsFragment : Fragment() {
 
     private var _binding: FragmentSearchingNewsBinding? = null
     private val binding get() = _binding!!
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel: SearchingViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(SearchingViewModel::class.java)
@@ -45,6 +49,7 @@ class SearchingNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        App.appComponent.injectSearchNewsFragment(this)
         _binding = FragmentSearchingNewsBinding.inflate(inflater, container, false)
         return binding.root
     }

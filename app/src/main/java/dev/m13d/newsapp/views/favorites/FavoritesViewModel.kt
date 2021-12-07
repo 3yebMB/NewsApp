@@ -7,8 +7,9 @@ import dev.m13d.newsapp.db.NewsDao
 import dev.m13d.newsapp.views.utils.AppState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class FavoritesViewModel(var db: NewsDao) : ViewModel() {
+class FavoritesViewModel @Inject constructor(var db: NewsDao) : ViewModel() {
 
     private var favoriteNews: MutableLiveData<AppState> = MutableLiveData()
     private var disposable: CompositeDisposable = CompositeDisposable()

@@ -7,8 +7,9 @@ import dev.m13d.newsapp.model.api.RequestApi
 import dev.m13d.newsapp.views.utils.AppState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class SearchingViewModel(var requestApi: RequestApi) : ViewModel() {
+class SearchingViewModel @Inject constructor(var requestApi: RequestApi) : ViewModel() {
 
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var appState: MutableLiveData<AppState> = MutableLiveData()
