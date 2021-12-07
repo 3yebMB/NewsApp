@@ -51,9 +51,9 @@ class DetailsFragment : Fragment() {
         viewModel.getCheckPoint().observe(viewLifecycleOwner, {
             flag = it
             if (it) {
-                binding.like.setImageResource(R.drawable.unlike)
-            } else if (!it) {
                 binding.like.setImageResource(R.drawable.ic_favorite)
+            } else if (!it) {
+                binding.like.setImageResource(R.drawable.ic_non_favorite)
             }
         })
         binding.like.setOnClickListener {

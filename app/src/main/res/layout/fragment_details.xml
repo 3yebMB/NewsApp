@@ -112,10 +112,10 @@
 
         <ImageButton
             android:id="@+id/like"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_gravity="end"
-            android:src="@drawable/ic_favorite" />
+            android:src="@drawable/ic_non_favorite" />
 
     </androidx.cardview.widget.CardView>
 
