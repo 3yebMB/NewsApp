@@ -23,6 +23,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        all {
+            def props = new Properties()
+            file("keys.properties").withInputStream { props.load(it) }
+            buildConfigField 'String', "API_KEY", props.getProperty("API_KEY")
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
