@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsListFragment">
 
+    <fragment
+        android:id="@+id/newsListFragment"
+        android:name="dev.m13d.newsapp.views.newslist.NewsListFragment"
+        android:label="fragment_news_list"
+        tools:layout="@layout/fragment_news_list" />
+    <fragment
+        android:id="@+id/favoritesNewsFragment"
+        android:name="dev.m13d.newsapp.views.favorites.FavoritesNewsFragment"
+        android:label="fragment_favorites_news"
+        tools:layout="@layout/fragment_favorites_news" />
+    <fragment
+        android:id="@+id/searchingNewsFragment"
+        android:name="dev.m13d.newsapp.views.searchnews.SearchingNewsFragment"
+        android:label="fragment_searching_news"
+        tools:layout="@layout/fragment_searching_news" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="dev.m13d.newsapp.views.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>
