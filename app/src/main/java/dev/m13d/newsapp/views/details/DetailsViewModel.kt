@@ -7,8 +7,9 @@ import dev.m13d.newsapp.db.NewsDao
 import dev.m13d.newsapp.model.entity.Article
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class DetailsViewModel(var db: NewsDao) : ViewModel() {
+class DetailsViewModel @Inject constructor(var db: NewsDao) : ViewModel() {
 
     private var disposable: CompositeDisposable = CompositeDisposable()
     var checkPoint: MutableLiveData<Boolean> = MutableLiveData()

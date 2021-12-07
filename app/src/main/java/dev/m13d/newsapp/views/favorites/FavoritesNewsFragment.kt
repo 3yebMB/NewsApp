@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.m13d.newsapp.R
 import dev.m13d.newsapp.adapters.NewsListAdapter
 import dev.m13d.newsapp.databinding.FragmentFavoritesNewsBinding
+import dev.m13d.newsapp.di.app.App
 import dev.m13d.newsapp.model.entity.Article
 import dev.m13d.newsapp.views.details.DetailsFragment
 import dev.m13d.newsapp.views.factory.ViewModelFactory
@@ -19,6 +20,7 @@ import dev.m13d.newsapp.views.newslist.NewsListFragment
 import dev.m13d.newsapp.views.utils.AppState
 import dev.m13d.newsapp.views.utils.gone
 import dev.m13d.newsapp.views.utils.visible
+import javax.inject.Inject
 
 class FavoritesNewsFragment : Fragment() {
 
@@ -27,6 +29,7 @@ class FavoritesNewsFragment : Fragment() {
     lateinit var viewModel: FavoritesViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NewsListAdapter
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val listener = object : NewsListFragment.OnItemViewClickListener {
         override fun onItemViewClick(article: Article) {
@@ -41,7 +44,7 @@ class FavoritesNewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        App.appComponent.injectFavoritesFragment(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(FavoritesViewModel::class.java)
         viewModel.getFavoriteNewsFromLocalStorage()
     }
@@ -49,7 +52,7 @@ class FavoritesNewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFavoritesNewsBinding.inflate(inflater, container, false)
         return binding.root
     }

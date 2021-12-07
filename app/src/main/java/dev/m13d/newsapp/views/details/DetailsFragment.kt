@@ -11,9 +11,11 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dev.m13d.newsapp.R
 import dev.m13d.newsapp.databinding.FragmentDetailsBinding
+import dev.m13d.newsapp.di.app.App
 import dev.m13d.newsapp.model.entity.Article
 import dev.m13d.newsapp.views.factory.ViewModelFactory
 import dev.m13d.newsapp.views.utils.gone
+import javax.inject.Inject
 
 class DetailsFragment : Fragment() {
 
@@ -21,7 +23,7 @@ class DetailsFragment : Fragment() {
     private var article: Article? = null
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
     lateinit var viewModel: DetailsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +32,7 @@ class DetailsFragment : Fragment() {
             article = it.getParcelable(BUNDLE_EXTRA)
             article?.type = 1
         }
-
+        App.appComponent.injectDetailsFragment(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(DetailsViewModel::class.java)
     }
 

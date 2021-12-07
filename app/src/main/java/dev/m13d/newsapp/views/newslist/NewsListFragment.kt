@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.m13d.newsapp.R
 import dev.m13d.newsapp.adapters.NewsListAdapter
 import dev.m13d.newsapp.databinding.FragmentNewsListBinding
+import dev.m13d.newsapp.di.app.App
 import dev.m13d.newsapp.model.entity.Article
 import dev.m13d.newsapp.views.details.DetailsFragment
 import dev.m13d.newsapp.views.factory.ViewModelFactory
@@ -27,6 +28,7 @@ class NewsListFragment : Fragment() {
     private lateinit var viewModel: NewsViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NewsListAdapter
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val listener = object : OnItemViewClickListener {
         override fun onItemViewClick(article: Article) {
@@ -41,6 +43,7 @@ class NewsListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App.appComponent.injectNewsListFragment(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(NewsViewModel::class.java)
         if (savedInstanceState == null) {
             viewModel.getNewsData()
@@ -58,7 +61,6 @@ class NewsListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         recyclerView = view?.findViewById(R.id.newsRecyclerView)!!
-
         viewModel.getAppState().observe(viewLifecycleOwner) {
             renderData(it)
         }
