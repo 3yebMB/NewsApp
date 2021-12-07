@@ -44,11 +44,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_alignStart="@+id/title"
-                    android:layout_alignLeft="@+id/title"
                     android:layout_alignTop="@+id/layoutDate"
                     android:layout_alignEnd="@+id/layoutDate"
-                    android:layout_alignRight="@+id/layoutDate"
-                    android:layout_marginRight="160dp"
+                    android:layout_marginEnd="160dp"
                     android:drawablePadding="10dp"
                     android:ellipsize="end"
                     android:gravity="bottom"
@@ -61,9 +59,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/img"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="-50dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/round_white"
                     android:padding="5dp">
 
@@ -78,8 +76,8 @@
                         android:id="@+id/publishedAt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="27dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="27dp"
+                        android:layout_marginEnd="10dp"
                         android:text="@string/publishDate"
                         android:textColor="@color/publishedAtTextColor" />
 
@@ -116,7 +114,7 @@
             android:id="@+id/like"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:src="@drawable/ic_favorite" />
 
     </androidx.cardview.widget.CardView>
